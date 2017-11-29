@@ -4,12 +4,23 @@ services:
     build:
       context: .
     restart: always
+    ports:
+     - "5555:5000"
+    depends_on:
+      - redis
+    volumes:
+      - .:/flask-app
+    command: 'python app.py'
+  worker:
+    build:
+      context: .
+    restart: always
 #    ports:
 #     - "5000:5000"
     depends_on:
       - redis
     volumes:
       - .:/flask-app
-    command: 'supervisord'
+    command: 'celery -A worker worker --loglevel=debug'
   redis:
     image: redis

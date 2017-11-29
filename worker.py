@@ -22,6 +22,6 @@ def crawls(url):
     soup=BeautifulSoup(htmldoc)
     links=[]
     images = soup.findAll("img", {"src":re.compile(r'\.(jpe?g)|(png)|(gif)$')})
-    for img in img_links:
+    for img in images:
         links.append(urlparse.urljoin(url,img["src"]))
     return links
