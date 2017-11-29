@@ -1,0 +1,5 @@
+Flask==0.10.1
+celery==3.1.21
+redis==2.10.5
+beautifulsoup4
+supervisor
